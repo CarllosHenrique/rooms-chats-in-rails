@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <% if @users.count >= 1 %>
+      <% @users.each do |user| %>
+        <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+          <div class="card h-100">
+            <div class="card-body">
+              <h5 class="card-title"><%= user.name %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">@<%= user.nick %></h6>
+              <p class="card-text"><%= user.bio %></p>
+              <p class="card-text"><em><%= pluralize(user.rooms.count, 'room') %></em></p>
+              <a href="<%= profile_path(user) %>" class="btn btn-primary">Ver Perfil</a>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <td><h1 class="display-6">Not have any users</h1></td>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <h1><%= @room.name %></h1>
+      <div class="card">
+        <div class="card-body">
+          <p class="card-text"><%= @room.description %></p>
+        </div>
+      </div>
+      <p><em>Created <%= time_ago_in_words(@room.created_at) %> ago by <strong>
+      <%= link_to "@#{@room.user.nick}", profile_path(@room.user) %></strong></em></p>
+      <% if user_signed_in? %>
+        <% if @room.user_id == current_user.id %>
+          <%= link_to "End this room", @room ,data: {turbo_method: :delete}, class: "btn btn-outline-danger" %>
+          <%= link_to "Edit this room", edit_room_path(@room), class: "btn btn-outline-primary" %>
+        <% end %>
+      <% end %>
+       <br>
+      <br>
+      
+        <div class="card" style="height: 300px; overflow-y: scroll;">
+            <div class="card-body" id="chat-messages">
+              <% if @comments.count >= 1 %>
+                <% @comments.each do |comments| %>
+                  <%= render "comments/comments", comments: comments %>
+                <% end %>
+              <% else %>
+                <p>This room doesn't have any comments<p>
+              <% end %>
+            </div>
+        </div>
+        <%= render "comments/form", room: @room %>
+    </div>
+  </div>
+</div>

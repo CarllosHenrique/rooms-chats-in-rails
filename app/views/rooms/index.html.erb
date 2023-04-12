@@ -1,0 +1,29 @@
+<div class="container">
+  <% if user_signed_in? %>
+    <div class="text-right mb-3">
+      <%= link_to "Create a room", new_room_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class="row">
+    <% if @rooms.count >= 1 %>
+      <% @rooms.each do |room| %>
+        <div class="col-md-4 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to room.name.truncate(20, omission: '...'), room_path(room) %></h5>
+              <h6 class="card-subtitle mb-2 text-muted">By @<%= room.user.nick %></h6>
+              <p class="card-text"><%= room.description.truncate(80, omission: '...') %></p>
+              <div class="text-right">
+                <%= link_to "See", room_path(room), class: "btn btn-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-12">
+        <h4 class="text-center">No rooms found</h4>
+      </div>
+    <% end %>
+  </div>
+</div>

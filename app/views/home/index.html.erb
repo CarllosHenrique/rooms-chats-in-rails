@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <% if @popular_room %>
+    <div class="card mb-3">
+      <div class="card-header">
+        Popular room
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= @popular_room.name %></h5>
+        <p class="card-text"><%= @popular_room.description.truncate(200, omission: '...') %></p>
+        <a href="<%= room_path(@popular_room) %>" class="btn btn-primary">See</a>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <% if @rooms.count >= 1 %>
+      <% @rooms.each do |room| %>
+        <div class="col-md-4">
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title"><%= room.name.truncate(20, omission: '...') %></h5>
+              <p class="card-text"><%= room.description.truncate(40, omission: '...') %></p>
+              <a href="<%= room_path(room) %>" class="btn btn-primary">See</a>
+            </div>
+            <div class="card-footer text-muted">
+              Author: @<%= room.user.nick %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="col-md-12">
+        <div class="alert alert-warning" role="alert">
+          Not have any rooms.
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if user_signed_in? %>
+    <div class="text-center">
+      <%= link_to "Create a room", new_room_path, class:"btn btn-outline-primary"%>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,7 @@
+<% if comments.user.id == current_user.id %>
+    <p style="background-color: #0000ff2e;padding: 7px;border-radius: 5px"><%= comments.content %><p>
+<% else %>
+    <p style="background-color: #0d5eef54;;padding: 7px;border-radius: 5px"><strong>@<%= comments.user.name %></strong>: <%= comments.content %><p>
+<% end %>
+
+
