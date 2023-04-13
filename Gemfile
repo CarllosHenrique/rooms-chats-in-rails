@@ -21,7 +21,7 @@ gem "importmap-rails"
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
-
+gem 'rubocop-rails', require: false
 
 gem 'devise'
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
@@ -68,8 +68,13 @@ group :development do
 end
 
 group :test do
+
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "dockerfile-rails", ">= 1.2", :group => :development
+
+gem "redis", "~> 5.0"

@@ -14,8 +14,10 @@ class RoomsController < ApplicationController
     end
 
     def destroy
-			@room.destroy
-			redirect_to root_path
+      if current_user.id == @room.user_id
+        @room.destroy
+        redirect_to root_path
+      end
     end
 
     def update
