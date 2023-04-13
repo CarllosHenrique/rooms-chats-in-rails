@@ -7,15 +7,7 @@ class CommentsController < ApplicationController
         @comment.user = current_user
         @comment.save
         redirect_to room_path(@room)
-      end
-
-    def destroy
-        
     end
-    
-
-
-
 
 
     private

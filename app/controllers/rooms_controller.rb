@@ -10,8 +10,7 @@ class RoomsController < ApplicationController
       @comments = @room.comments.order(created_at: :asc)
     end
 
-    def edit
-    end
+    def edit; end
 
     def destroy
       if current_user.id == @room.user_id
