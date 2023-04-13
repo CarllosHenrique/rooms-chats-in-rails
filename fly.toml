@@ -1,6 +1,6 @@
-# fly.toml file generated for nethub on 2023-04-12T23:48:58-03:00
+# fly.toml file generated for nethubs on 2023-04-13T11:33:50-03:00
 
-app = "nethub"
+app = "nethubs"
 kill_signal = "SIGINT"
 kill_timeout = 5
 primary_region = "gru"
